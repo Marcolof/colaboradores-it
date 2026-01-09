@@ -1,0 +1,6 @@
+# Archivos que Vercel debe ignorar
+node_modules
+.env.local
+.env*.local
+.vercel
+.git
