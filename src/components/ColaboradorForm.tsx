@@ -37,7 +37,10 @@ export function ColaboradorForm({ colaborador, onBack }: Props) {
 
   // Cargar datos del colaborador cuando está editando
   useEffect(() => {
+    console.log('🔍 ColaboradorForm - Colaborador recibido:', colaborador);
+    
     if (colaborador) {
+      console.log('✅ Cargando datos del colaborador en formulario');
       setFormData({
         ...colaborador,
         // Asegurar que los campos tengan valores válidos
@@ -50,6 +53,7 @@ export function ColaboradorForm({ colaborador, onBack }: Props) {
         setShowPersonalLinkedIn(true);
       }
     } else {
+      console.log('ℹ️ Nuevo colaborador - Formulario vacío');
       // Resetear formulario para nuevo colaborador
       setFormData({
         nombre: '',
