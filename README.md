@@ -2,6 +2,12 @@
 
 Sistema web para la gestión de colaboradores y generación de firmas digitales corporativas.
 
+## 🌐 Demo en Vivo
+
+**🚀 Aplicación desplegada en Vercel:** [https://colaboradores-ittest.vercel.app/](https://colaboradores-ittest.vercel.app/)
+
+> Deploy automático desde GitHub - Cada push a `main` se despliega automáticamente
+
 ## 🚀 Características
 
 - ✅ Gestión completa de colaboradores (CRUD)
