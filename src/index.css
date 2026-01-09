@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-vortex-text-primary bg-vortex-gray-bg;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-vortex text-white font-semibold px-6 py-3 rounded-full
+           shadow-vortex hover:shadow-vortex-md transition-all duration-300
+           hover:bg-gradient-purple-light active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-vortex-primary font-semibold px-6 py-3 rounded-full
+           border-2 border-vortex-primary shadow-vortex-sm
+           hover:bg-gradient-vortex hover:text-white hover:border-transparent
+           transition-all duration-300 hover:shadow-vortex-md active:scale-95;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-accent text-white font-semibold px-6 py-3 rounded-full
+           shadow-vortex hover:shadow-vortex-md transition-all duration-300
+           hover:bg-gradient-green-light active:scale-95;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-vortex-accent font-semibold px-6 py-3 rounded-full
+           border-2 border-vortex-accent hover:border-vortex-accent
+           transition-all duration-300 hover:bg-gradient-accent hover:text-white;
+  }
+
+  .input-vortex {
+    @apply w-full px-4 py-3 border-2 border-vortex-border rounded-lg
+           focus:border-vortex-primary focus:ring-2 focus:ring-vortex-primary/20
+           outline-none transition-all duration-200 bg-white text-vortex-text-primary
+           placeholder:text-vortex-text-light;
+  }
+
+  .card-vortex {
+    @apply bg-vortex-gray-card rounded-2xl shadow-vortex p-6
+           hover:shadow-vortex-lg transition-all duration-300
+           border border-vortex-border;
+  }
+
+  .section-title {
+    @apply text-display-md font-display text-vortex-text-primary mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-heading-lg font-display text-vortex-text-secondary mb-3;
+  }
+}
+
+@layer utilities {
+  .text-gradient-vortex {
+    @apply bg-gradient-vortex bg-clip-text text-transparent;
+  }
+
+  .text-gradient-accent {
+    @apply bg-gradient-accent bg-clip-text text-transparent;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
