@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Plus, Search, Eye, Edit, Trash2 } from 'lucide-react';
+import { Plus, Search, Eye, FileSignature, Trash2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import type { Colaborador } from '../types';
+import { SignatureModal } from './SignatureModal';
 
 type Props = {
   onNewColaborador: () => void;
@@ -13,6 +14,8 @@ export function ColaboradoresList({ onNewColaborador, onEditColaborador }: Props
   const [filteredColaboradores, setFilteredColaboradores] = useState<Colaborador[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
+  const [selectedColaborador, setSelectedColaborador] = useState<Colaborador | null>(null);
+  const [showSignatureModal, setShowSignatureModal] = useState(false);
 
   useEffect(() => {
     loadColaboradores();
@@ -67,6 +70,11 @@ export function ColaboradoresList({ onNewColaborador, onEditColaborador }: Props
     } else {
       loadColaboradores();
     }
+  };
+
+  const handleGenerateSignature = (colaborador: Colaborador) => {
+    setSelectedColaborador(colaborador);
+    setShowSignatureModal(true);
   };
 
   const formatDate = (dateString: string) => {
@@ -187,11 +195,18 @@ export function ColaboradoresList({ onNewColaborador, onEditColaborador }: Props
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-center gap-2">
                         <button
-                          onClick={() => onEditColaborador(colaborador)}
+                          onClick={() => handleGenerateSignature(colaborador)}
                           className="p-2.5 text-[#454545] hover:bg-vortex-primary hover:text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
                           title="Ver Colaborador"
                         >
                           <Eye className="w-5 h-5" />
+                        </button>
+                        <button
+                          onClick={() => onEditColaborador(colaborador)}
+                          className="p-2.5 text-[#454545] hover:bg-vortex-primary hover:text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
+                          title="Editar Colaborador"
+                        >
+                          <FileSignature className="w-5 h-5" />
                         </button>
                         <button
                           onClick={() => handleDelete(colaborador.id!)}
@@ -209,6 +224,13 @@ export function ColaboradoresList({ onNewColaborador, onEditColaborador }: Props
           </table>
         </div>
       </div>
+
+      {showSignatureModal && selectedColaborador && (
+        <SignatureModal
+          colaborador={selectedColaborador}
+          onClose={() => setShowSignatureModal(false)}
+        />
+      )}
     </>
   );
 }
