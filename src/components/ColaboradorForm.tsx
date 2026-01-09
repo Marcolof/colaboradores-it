@@ -35,9 +35,44 @@ export function ColaboradorForm({ colaborador, onBack }: Props) {
   });
   const [showPersonalLinkedIn, setShowPersonalLinkedIn] = useState(false);
 
+  // Cargar datos del colaborador cuando está editando
   useEffect(() => {
-    if (colaborador?.personal_linkedin_url) {
-      setShowPersonalLinkedIn(true);
+    if (colaborador) {
+      setFormData({
+        ...colaborador,
+        // Asegurar que los campos tengan valores válidos
+        telefono_pais: colaborador.telefono_pais || '+54',
+        organizacion: colaborador.organizacion || 'Vortex IT',
+        color_principal: colaborador.color_principal || '#7028e4',
+      });
+      
+      if (colaborador.personal_linkedin_url) {
+        setShowPersonalLinkedIn(true);
+      }
+    } else {
+      // Resetear formulario para nuevo colaborador
+      setFormData({
+        nombre: '',
+        apellido: '',
+        dni: '',
+        fecha_nacimiento: null,
+        sexo: null,
+        email: '',
+        telefono_pais: '+54',
+        telefono_numero: null,
+        domicilio: null,
+        foto_url: null,
+        fecha_ingreso: '',
+        cargo: '',
+        organizacion: 'Vortex IT',
+        linkedin_url: null,
+        instagram_url: null,
+        facebook_url: null,
+        website_url: null,
+        personal_linkedin_url: null,
+        color_principal: '#7028e4',
+      });
+      setShowPersonalLinkedIn(false);
     }
   }, [colaborador]);
 
