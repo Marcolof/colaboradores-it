@@ -195,16 +195,16 @@ export function ColaboradoresList({ onNewColaborador, onEditColaborador }: Props
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-center gap-2">
                         <button
-                          onClick={() => onEditColaborador(colaborador)}
+                          onClick={() => handleGenerateSignature(colaborador)}
                           className="p-2.5 text-[#454545] hover:bg-vortex-primary hover:text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-                          title="Ver/Editar"
+                          title="Ver Colaborador"
                         >
                           <Eye className="w-5 h-5" />
                         </button>
                         <button
-                          onClick={() => handleGenerateSignature(colaborador)}
+                          onClick={() => onEditColaborador(colaborador)}
                           className="p-2.5 text-[#454545] hover:bg-vortex-primary hover:text-white rounded-lg transition-all duration-200 hover:scale-110 active:scale-95"
-                          title="Generar Firma Digital"
+                          title="Editar Colaborador"
                         >
                           <FileSignature className="w-5 h-5" />
                         </button>
