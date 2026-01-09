@@ -64,6 +64,46 @@ Sistema web para la gestión de colaboradores y generación de firmas digitales 
    - `supabase/migrations/20251113000000_add_personal_linkedin.sql`
    - `supabase/migrations/20251113200417_add_personal_linkedin_url.sql`
 
+## 🌐 Deploy en Vercel
+
+### Configurar Variables de Entorno en Vercel
+
+**⚠️ IMPORTANTE:** La aplicación no funcionará en Vercel sin estas variables.
+
+1. **Ve a tu proyecto en Vercel Dashboard:**
+   - https://vercel.com/dashboard
+   - Selecciona tu proyecto
+
+2. **Configurar Variables de Entorno:**
+   - Ve a **Settings** → **Environment Variables**
+   - Agrega las siguientes variables:
+
+   ```
+   VITE_SUPABASE_URL = tu-url-de-supabase
+   VITE_SUPABASE_ANON_KEY = tu-clave-anonima
+   ```
+
+   - Selecciona: **Production**, **Preview**, y **Development**
+   - Click en **Save**
+
+3. **Redeploy:**
+   - Ve a **Deployments**
+   - Click en el último deployment
+   - Click en **⋯** (tres puntos) → **Redeploy**
+
+4. **Verificar:**
+   - Espera 1-3 minutos
+   - Abre tu URL de Vercel
+   - ¡La aplicación debería funcionar! 🎉
+
+### Deploy Automático
+
+Cada vez que hagas `git push` a la rama `main`, Vercel automáticamente:
+1. Detecta el cambio
+2. Ejecuta `npm run build`
+3. Despliega la nueva versión
+4. Actualiza tu URL en vivo
+
 ## 🚀 Uso
 
 ### Modo Desarrollo
